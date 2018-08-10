@@ -11,8 +11,16 @@
 
 %% API
 -export([
-    print/1
+    print/1,
+    for/3
 ]).
 
 print(X) ->
     io:format("~s :~p~n", [X, X]).
+
+for(Max, Max, Fun) ->
+    Fun(Max);
+
+for(Min, Max, Fun) ->
+    Fun(Min + 1),
+    for(Min + 1, Max, Fun).
